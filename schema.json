@@ -4,75 +4,157 @@
   "schema": {
     "name": "budicalendar",
     "friendlyName": "BudiCalendar",
-    "description": "A modern, general-purpose calendar component for Budibase",
+    "description": "Moderner Kalender für Budibase — Monat, Woche, Liste",
     "icon": "Calendar",
     "settings": [
       {
         "section": true,
-        "name": "Data Source 1",
-        "settings": [
-          { "type": "dataProvider", "label": "Data Provider", "key": "dataProvider" },
-          { "type": "text",    "key": "fieldTitle",  "label": "Title Field"  },
-          { "type": "text",    "key": "fieldDate",   "label": "Date Field"   },
-          { "type": "text",    "key": "fieldStart",  "label": "Start Field"  },
-          { "type": "text",    "key": "fieldEnd",    "label": "End Field"    },
-          { "type": "boolean", "key": "fieldAllDay", "label": "All-day events", "defaultValue": true },
-          { "type": "color",   "key": "fieldColor",  "label": "Event Color",    "defaultValue": "#3b82f6" }
-        ]
-      },
-      {
-        "section": true,
-        "name": "Data Source 2",
-        "settings": [
-          { "type": "dataProvider", "label": "Data Provider", "key": "dataProvider2" },
-          { "type": "text",    "key": "fieldTitle2", "label": "Title Field" },
-          { "type": "text",    "key": "fieldDate2",  "label": "Date Field"  },
-          { "type": "text",    "key": "fieldStart2", "label": "Start Field" },
-          { "type": "text",    "key": "fieldEnd2",   "label": "End Field"   },
-          { "type": "boolean", "key": "fieldAllDay2", "label": "All-day events", "defaultValue": true },
-          { "type": "color",   "key": "fieldColor2",  "label": "Event Color",    "defaultValue": "#10b981" }
-        ]
-      },
-      {
-        "section": true,
-        "name": "Actions",
+        "name": "📁 Datenquelle 1",
         "settings": [
           {
-            "type": "event", "label": "On Day Click", "key": "onDayClick",
+            "type": "dataProvider",
+            "label": "Data Provider",
+            "key": "dataProvider",
+            "helpText": "Wähle den Data Provider, der über dem Kalender in der Komponenten-Hierarchie liegt."
+          },
+          {
+            "type": "text",
+            "key": "fieldTitle",
+            "label": "Titel-Feld",
+            "helpText": "Spaltenname aus deiner Tabelle für den Ereignis-Titel. Beispiel: name"
+          },
+          {
+            "type": "text",
+            "key": "fieldDate",
+            "label": "Datums-Feld",
+            "helpText": "Spaltenname für ein einzelnes Datum (wenn kein Start/Ende nötig). Beispiel: datum"
+          },
+          {
+            "type": "text",
+            "key": "fieldStart",
+            "label": "Start-Feld",
+            "helpText": "Spaltenname für das Startdatum. Überschreibt 'Datums-Feld'. Beispiel: startdatum"
+          },
+          {
+            "type": "text",
+            "key": "fieldEnd",
+            "label": "Ende-Feld",
+            "helpText": "Spaltenname für das Enddatum (optional). Beispiel: enddatum"
+          },
+          {
+            "type": "boolean",
+            "key": "fieldAllDay",
+            "label": "Ganztägige Ereignisse",
+            "defaultValue": true,
+            "helpText": "Ein = nur Datum wird genutzt. Aus = Uhrzeit wird berücksichtigt."
+          },
+          {
+            "type": "color",
+            "key": "fieldColor",
+            "label": "Ereignis-Farbe",
+            "defaultValue": "#3b82f6",
+            "helpText": "Farbe der Ereignis-Chips für diese Datenquelle."
+          }
+        ]
+      },
+      {
+        "section": true,
+        "name": "📁 Datenquelle 2 (optional)",
+        "settings": [
+          {
+            "type": "dataProvider",
+            "label": "Data Provider",
+            "key": "dataProvider2",
+            "helpText": "Zweite Datenquelle, z.B. für eine andere Tabelle oder Kategorie."
+          },
+          {
+            "type": "text",
+            "key": "fieldTitle2",
+            "label": "Titel-Feld",
+            "helpText": "Spaltenname für den Ereignis-Titel der zweiten Quelle."
+          },
+          {
+            "type": "text",
+            "key": "fieldDate2",
+            "label": "Datums-Feld",
+            "helpText": "Spaltenname für das Datum der zweiten Quelle."
+          },
+          {
+            "type": "text",
+            "key": "fieldStart2",
+            "label": "Start-Feld",
+            "helpText": "Spaltenname für das Startdatum der zweiten Quelle."
+          },
+          {
+            "type": "text",
+            "key": "fieldEnd2",
+            "label": "Ende-Feld",
+            "helpText": "Spaltenname für das Enddatum der zweiten Quelle (optional)."
+          },
+          {
+            "type": "boolean",
+            "key": "fieldAllDay2",
+            "label": "Ganztägige Ereignisse",
+            "defaultValue": true
+          },
+          {
+            "type": "color",
+            "key": "fieldColor2",
+            "label": "Ereignis-Farbe",
+            "defaultValue": "#10b981"
+          }
+        ]
+      },
+      {
+        "section": true,
+        "name": "⚡ Aktionen",
+        "settings": [
+          {
+            "type": "event",
+            "label": "Bei Klick auf Tag",
+            "key": "onDayClick",
+            "helpText": "Wird ausgelöst wenn der Nutzer auf eine leere Tageszelle klickt.",
             "context": [
-              { "label": "Datum (ISO)", "key": "date" },
-              { "label": "Anzahl Events", "key": "count" },
-              { "label": "Events des Tages", "key": "events" }
+              { "label": "Datum (ISO, z.B. 2026-03-24)", "key": "date" },
+              { "label": "Anzahl Ereignisse an diesem Tag", "key": "count" },
+              { "label": "Alle Zeilen dieses Tages", "key": "events" }
             ]
           },
           {
-            "type": "event", "label": "On Event Click", "key": "onEventClick",
+            "type": "event",
+            "label": "Bei Klick auf Ereignis",
+            "key": "onEventClick",
+            "helpText": "Wird ausgelöst wenn der Nutzer auf ein konkretes Ereignis klickt.",
             "context": [
-              { "label": "Titel",    "key": "title" },
-              { "label": "Start",    "key": "start" },
-              { "label": "Ende",     "key": "end"   },
-              { "label": "Row ID",   "key": "rowId" },
-              { "label": "Row Data", "key": "row"   },
-              { "label": "Datum",    "key": "date"  }
+              { "label": "Titel des Ereignisses", "key": "title" },
+              { "label": "Startdatum (ISO)", "key": "start" },
+              { "label": "Enddatum (ISO)", "key": "end" },
+              { "label": "Datenbank-ID der Zeile", "key": "rowId" },
+              { "label": "Komplette Zeile (alle Felder)", "key": "row" },
+              { "label": "Datum (ISO)", "key": "date" }
             ]
           }
         ]
       },
       {
         "section": true,
-        "name": "Darstellung",
+        "name": "🎨 Darstellung",
         "settings": [
           {
-            "type": "select", "key": "initialView", "label": "Standardansicht",
+            "type": "select",
+            "key": "initialView",
+            "label": "Standardansicht",
             "options": [
               { "label": "Monat", "value": "month" },
-              { "label": "Woche", "value": "week"  },
-              { "label": "Liste", "value": "list"  }
+              { "label": "Woche", "value": "week" },
+              { "label": "Liste", "value": "list" }
             ],
             "defaultValue": "month"
           },
           {
-            "type": "select", "key": "language", "label": "Sprache",
+            "type": "select",
+            "key": "language",
+            "label": "Sprache",
             "options": [
               { "label": "Deutsch", "value": "de" },
               { "label": "English", "value": "en" }
@@ -80,34 +162,134 @@
             "defaultValue": "de"
           },
           {
-            "type": "select", "key": "firstDay", "label": "Erster Wochentag",
+            "type": "select",
+            "key": "firstDay",
+            "label": "Erster Wochentag",
             "options": [
-              { "label": "Montag",  "value": "1" },
+              { "label": "Montag", "value": "1" },
               { "label": "Sonntag", "value": "0" },
               { "label": "Samstag", "value": "6" }
             ],
             "defaultValue": "1"
           },
-          { "type": "boolean", "key": "showWeekends",    "label": "Wochenenden anzeigen",   "defaultValue": true  },
-          { "type": "boolean", "key": "showWeekNumbers", "label": "Kalenderwochen anzeigen", "defaultValue": false },
           {
-            "type": "number", "key": "maxEventsPerDay", "label": "Max. Events pro Tag",
+            "type": "boolean",
+            "key": "showWeekends",
+            "label": "Wochenenden anzeigen",
+            "defaultValue": true
+          },
+          {
+            "type": "boolean",
+            "key": "showWeekNumbers",
+            "label": "Kalenderwochen anzeigen",
+            "defaultValue": false
+          },
+          {
+            "type": "number",
+            "key": "maxEventsPerDay",
+            "label": "Max. Ereignisse pro Tag",
             "defaultValue": 3,
-            "helpText": "Wie viele Events pro Tageszelle angezeigt werden (Rest → +N weitere)"
+            "helpText": "Wie viele Ereignisse in einer Tageszelle sichtbar sind. Weitere werden als '+N weitere' angezeigt."
+          },
+          {
+            "type": "text",
+            "key": "calendarHeight",
+            "label": "Höhe des Kalenders",
+            "defaultValue": "600px",
+            "helpText": "Mindesthöhe des Kalenders. Beispiele: 600px, 80vh, 100%"
           }
         ]
       },
       {
         "section": true,
-        "name": "Count View",
+        "name": "🎨 Farben",
         "settings": [
-          { "type": "boolean", "key": "showCountView", "label": "Count View aktivieren", "defaultValue": false },
-          { "type": "number",  "key": "countMin",      "label": "Schwelle niedrig",      "defaultValue": 1 },
-          { "type": "number",  "key": "countMax",      "label": "Schwelle hoch",         "defaultValue": 5 },
-          { "type": "color",   "key": "colorLow",  "label": "Farbe niedrig", "defaultValue": "rgba(34,197,94,0.22)"  },
-          { "type": "color",   "key": "colorMid",  "label": "Farbe mittel",  "defaultValue": "rgba(245,158,11,0.28)" },
-          { "type": "color",   "key": "colorHigh", "label": "Farbe hoch",    "defaultValue": "rgba(239,68,68,0.28)"  },
-          { "type": "text",    "key": "countLabel", "label": "Label", "defaultValue": "{count}", "helpText": "{count} wird durch die Zahl ersetzt" }
+          {
+            "type": "color",
+            "key": "colorAccent",
+            "label": "Akzentfarbe (Heute, Fokus)",
+            "defaultValue": "#3b82f6",
+            "helpText": "Farbe für den heutigen Tag, Fokus-Rahmen und aktiven View-Button."
+          },
+          {
+            "type": "color",
+            "key": "colorToolbarBg",
+            "label": "Toolbar-Hintergrund",
+            "defaultValue": "#ffffff",
+            "helpText": "Hintergrundfarbe der oberen Toolbar."
+          },
+          {
+            "type": "color",
+            "key": "colorHeaderBg",
+            "label": "Wochentags-Header Hintergrund",
+            "defaultValue": "#f8fafc",
+            "helpText": "Hintergrundfarbe der MO DI MI ... Zeile."
+          },
+          {
+            "type": "color",
+            "key": "colorCellBg",
+            "label": "Tageszellen Hintergrund",
+            "defaultValue": "#ffffff",
+            "helpText": "Standardfarbe für leere Tageszellen."
+          },
+          {
+            "type": "color",
+            "key": "colorCellHover",
+            "label": "Tageszellen Hover",
+            "defaultValue": "#f8fafc",
+            "helpText": "Farbe beim Hover über eine Tageszelle."
+          },
+          {
+            "type": "color",
+            "key": "colorBorder",
+            "label": "Rahmenfarbe",
+            "defaultValue": "#f1f5f9",
+            "helpText": "Farbe der Linien zwischen den Tageszellen."
+          },
+          {
+            "type": "color",
+            "key": "colorActiveBtn",
+            "label": "Aktiver Button (Ansicht)",
+            "defaultValue": "#1e293b",
+            "helpText": "Hintergrundfarbe des aktiven Monat/Woche/Liste-Buttons."
+          }
+        ]
+      },
+      {
+        "section": true,
+        "name": "🔢 Count View (optional)",
+        "settings": [
+          {
+            "type": "boolean",
+            "key": "showCountView",
+            "label": "Count View aktivieren",
+            "defaultValue": false,
+            "helpText": "Zeigt statt Ereignis-Titeln eine große Zahl pro Tag. Nützlich für Auslastungs-Übersichten."
+          },
+          {
+            "type": "number",
+            "key": "countMin",
+            "label": "Schwelle: niedrig",
+            "defaultValue": 1,
+            "helpText": "Bis zu diesem Wert wird die 'niedrig'-Farbe gezeigt."
+          },
+          {
+            "type": "number",
+            "key": "countMax",
+            "label": "Schwelle: hoch",
+            "defaultValue": 5,
+            "helpText": "Ab diesem Wert wird die 'hoch'-Farbe gezeigt."
+          },
+          { "type": "color", "key": "colorLow",  "label": "Farbe: niedrig", "defaultValue": "rgba(34,197,94,0.22)"  },
+          { "type": "color", "key": "colorMid",  "label": "Farbe: mittel",  "defaultValue": "rgba(245,158,11,0.28)" },
+          { "type": "color", "key": "colorHigh", "label": "Farbe: hoch",    "defaultValue": "rgba(239,68,68,0.28)"  },
+          {
+            "type": "text",
+            "key": "countLabel",
+            "label": "Beschriftung",
+            "defaultValue": "{count}",
+            "helpText": "Text der in der Tageszelle erscheint. {count} wird durch die Zahl ersetzt. Beispiel: '{count} frei'"
+          }
         ]
       }
     ]

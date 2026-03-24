@@ -1,6 +1,6 @@
 {
   "name": "budicalendar",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A modern, general-purpose calendar plugin for Budibase",
   "author": "Tim Schellenberg",
   "license": "MIT",
@@ -9,12 +9,7 @@
     "type": "git",
     "url": "https://github.com/timschellenberg/budicalendar.git"
   },
-  "keywords": [
-    "budibase",
-    "budibase-plugin",
-    "calendar",
-    "svelte"
-  ],
+  "keywords": ["budibase", "budibase-plugin", "calendar", "svelte"],
   "svelte": "index.js",
   "module": "dist/plugin.min.js",
   "scripts": {
