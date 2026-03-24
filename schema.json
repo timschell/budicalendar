@@ -1,0 +1,115 @@
+{
+  "type": "component",
+  "metadata": { "svelteMajor": 5 },
+  "schema": {
+    "name": "budicalendar",
+    "friendlyName": "BudiCalendar",
+    "description": "A modern, general-purpose calendar component for Budibase",
+    "icon": "Calendar",
+    "settings": [
+      {
+        "section": true,
+        "name": "Data Source 1",
+        "settings": [
+          { "type": "dataProvider", "label": "Data Provider", "key": "dataProvider" },
+          { "type": "text",    "key": "fieldTitle",  "label": "Title Field"  },
+          { "type": "text",    "key": "fieldDate",   "label": "Date Field"   },
+          { "type": "text",    "key": "fieldStart",  "label": "Start Field"  },
+          { "type": "text",    "key": "fieldEnd",    "label": "End Field"    },
+          { "type": "boolean", "key": "fieldAllDay", "label": "All-day events", "defaultValue": true },
+          { "type": "color",   "key": "fieldColor",  "label": "Event Color",    "defaultValue": "#3b82f6" }
+        ]
+      },
+      {
+        "section": true,
+        "name": "Data Source 2",
+        "settings": [
+          { "type": "dataProvider", "label": "Data Provider", "key": "dataProvider2" },
+          { "type": "text",    "key": "fieldTitle2", "label": "Title Field" },
+          { "type": "text",    "key": "fieldDate2",  "label": "Date Field"  },
+          { "type": "text",    "key": "fieldStart2", "label": "Start Field" },
+          { "type": "text",    "key": "fieldEnd2",   "label": "End Field"   },
+          { "type": "boolean", "key": "fieldAllDay2", "label": "All-day events", "defaultValue": true },
+          { "type": "color",   "key": "fieldColor2",  "label": "Event Color",    "defaultValue": "#10b981" }
+        ]
+      },
+      {
+        "section": true,
+        "name": "Actions",
+        "settings": [
+          {
+            "type": "event", "label": "On Day Click", "key": "onDayClick",
+            "context": [
+              { "label": "Datum (ISO)", "key": "date" },
+              { "label": "Anzahl Events", "key": "count" },
+              { "label": "Events des Tages", "key": "events" }
+            ]
+          },
+          {
+            "type": "event", "label": "On Event Click", "key": "onEventClick",
+            "context": [
+              { "label": "Titel",    "key": "title" },
+              { "label": "Start",    "key": "start" },
+              { "label": "Ende",     "key": "end"   },
+              { "label": "Row ID",   "key": "rowId" },
+              { "label": "Row Data", "key": "row"   },
+              { "label": "Datum",    "key": "date"  }
+            ]
+          }
+        ]
+      },
+      {
+        "section": true,
+        "name": "Darstellung",
+        "settings": [
+          {
+            "type": "select", "key": "initialView", "label": "Standardansicht",
+            "options": [
+              { "label": "Monat", "value": "month" },
+              { "label": "Woche", "value": "week"  },
+              { "label": "Liste", "value": "list"  }
+            ],
+            "defaultValue": "month"
+          },
+          {
+            "type": "select", "key": "language", "label": "Sprache",
+            "options": [
+              { "label": "Deutsch", "value": "de" },
+              { "label": "English", "value": "en" }
+            ],
+            "defaultValue": "de"
+          },
+          {
+            "type": "select", "key": "firstDay", "label": "Erster Wochentag",
+            "options": [
+              { "label": "Montag",  "value": "1" },
+              { "label": "Sonntag", "value": "0" },
+              { "label": "Samstag", "value": "6" }
+            ],
+            "defaultValue": "1"
+          },
+          { "type": "boolean", "key": "showWeekends",    "label": "Wochenenden anzeigen",   "defaultValue": true  },
+          { "type": "boolean", "key": "showWeekNumbers", "label": "Kalenderwochen anzeigen", "defaultValue": false },
+          {
+            "type": "number", "key": "maxEventsPerDay", "label": "Max. Events pro Tag",
+            "defaultValue": 3,
+            "helpText": "Wie viele Events pro Tageszelle angezeigt werden (Rest → +N weitere)"
+          }
+        ]
+      },
+      {
+        "section": true,
+        "name": "Count View",
+        "settings": [
+          { "type": "boolean", "key": "showCountView", "label": "Count View aktivieren", "defaultValue": false },
+          { "type": "number",  "key": "countMin",      "label": "Schwelle niedrig",      "defaultValue": 1 },
+          { "type": "number",  "key": "countMax",      "label": "Schwelle hoch",         "defaultValue": 5 },
+          { "type": "color",   "key": "colorLow",  "label": "Farbe niedrig", "defaultValue": "rgba(34,197,94,0.22)"  },
+          { "type": "color",   "key": "colorMid",  "label": "Farbe mittel",  "defaultValue": "rgba(245,158,11,0.28)" },
+          { "type": "color",   "key": "colorHigh", "label": "Farbe hoch",    "defaultValue": "rgba(239,68,68,0.28)"  },
+          { "type": "text",    "key": "countLabel", "label": "Label", "defaultValue": "{count}", "helpText": "{count} wird durch die Zahl ersetzt" }
+        ]
+      }
+    ]
+  }
+}
